@@ -1,0 +1,331 @@
+:root {
+    /* Цветовая палитра - современный темный режим (Glassmorphism) */
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --success: #10b981;
+    --error: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Красивый фоновый градиент */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    max-width: calc(100vw - 40px);
+    user-select: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.logo-icon {
+    height: 60px;
+    width: auto;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px; /* Расширяем контейнер для сетки карточек */
+    padding: 20px;
+    z-index: 1;
+}
+
+/* Сетка для модулей главного меню */
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Горизонтальная карточка модуля */
+.module-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    text-align: left;
+    color: var(--text-main);
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(59, 130, 246, 0.4);
+    border-color: rgba(59, 130, 246, 0.5);
+    background: rgba(40, 53, 75, 0.85);
+}
+
+.module-icon {
+    font-size: 56px;
+    flex-shrink: 0;
+    line-height: 1;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.module-icon svg {
+    width: 56px;
+    height: 56px;
+}
+
+.module-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.module-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.module-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Эффект матового стекла для карточек (вопросы и результаты) */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    margin-bottom: 24px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+}
+
+h1 { font-size: 28px; }
+h2 { font-size: 22px; }
+
+/* Стили для главного экрана */
+.start-screen-header {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.start-screen-title {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.start-screen-desc {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* Стили кнопок */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    margin: 12px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-main);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn:disabled {
+    cursor: default;
+    opacity: 0.8;
+}
+
+/* Главная кнопка-акцент */
+.btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    text-align: center;
+    font-weight: 600;
+    margin-top: 24px;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn.primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+/* Стили правильных/неправильных ответов */
+.btn.correct {
+    background: rgba(16, 185, 129, 0.2) !important;
+    border-color: var(--success) !important;
+    color: #fff;
+}
+
+.btn.wrong {
+    background: rgba(239, 68, 68, 0.2) !important;
+    border-color: var(--error) !important;
+    color: #fff;
+}
+
+.progress {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.result-score {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--accent);
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#global-back-btn {
+    position: absolute;
+    top: 90px;
+    left: 20px;
+    width: auto;
+    padding: 8px 16px;
+    z-index: 10;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+    #global-back-btn {
+        position: static;
+        margin: -10px auto 20px auto;
+        display: block;
+        width: max-content;
+    }
+    
+    .logo {
+        position: static;
+        margin: 20px auto;
+        justify-content: center;
+        max-width: 90vw;
+    }
+    .logo-dash, .logo-text {
+        display: none;
+    }
+    .modules-grid {
+        grid-template-columns: 1fr;
+    }
+    .module-card {
+        padding: 20px;
+        gap: 16px;
+    }
+    .module-icon {
+        font-size: 48px;
+    }
+    .module-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (min-width: 769px) {
+    .modules-grid .module-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 400px;
+        justify-self: center;
+        width: 100%;
+    }
+}

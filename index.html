@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Охрана Труда - Тестирование</title>
+    <meta name="description" content="Приложение для тестирования по охране труда">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
+</head>
+<body>
+    <!-- Главный контейнер приложения, сюда будет подгружаться интерфейс -->
+    <header class="logo" aria-label="Российские железные дороги">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" class="logo-icon" width="150" height="60" aria-hidden="true" style="user-select: none;">
+            <rect width="100" height="40" rx="6" fill="#e21a1a"/>
+            <text x="50" y="28" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-style="italic" font-size="24" text-anchor="middle" letter-spacing="1">РЖД</text>
+        </svg>
+        <span class="logo-dash" aria-hidden="true">&mdash;</span>
+        <span class="logo-text">Российские железные дороги</span>
+    </header>
+    <button id="global-back-btn" class="btn" style="display: none;">&larr; Назад в меню</button>
+    <div id="app" class="container"></div>
+
+    <!-- Подключаем логику -->
+    <script src="questions.js"></script>
+    <script src="questionsFirstAid.js"></script>
+    <script src="questionsFireSafety.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
